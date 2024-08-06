@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BukuuController;
 use App\Http\Controllers\KategoriBukuController;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,5 +39,8 @@ Route::get('kategoribuku', [KategoriBukuController::class, 'index'])->name('hala
 Route::post('kategoribuku', [KategoriBukuController::class, 'store'])->name('halaman.kategoribuku.store');
 Route::get('kategoribuku/{id}', [KategoriBukuController::class, 'detail'])->name('halaman.kategoribuku.detail');
 
-Route::get('admin', [AdminController::class, 'admin'])->name('halaman.admin');
-Route::post('admin', [AdminController::class, 'store'])->name('halaman.admin.store');
+Route::get('/admin', [AdminController::class, 'admin'])->name('halaman.admin');
+Route::get('/add_admin', [AdminController::class, 'create'])->name('add_admin');
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+// Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+// Route::post('/admin', [AdminController::class, 'store'])->name('halaman.admin.store');

@@ -39,13 +39,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Judul Buku</th>
                                 <th scope="col">Penulis</th>
                                 <th scope="col">Penerbit</th>
-                                <th scope="col">Tahun Terbit</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Stok</th>
-                                <th scope="col">Kategori</th>
                                 <th></th>
                             </tr>
                         </thead>

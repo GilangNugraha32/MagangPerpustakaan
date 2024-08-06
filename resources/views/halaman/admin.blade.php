@@ -34,7 +34,21 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Tabel Admin</h5>
-                    <!-- Bordered Table -->
+                    <div class="container">
+                        <div class="text-end">
+                            <a href="{{ route('add_admin') }}" class="btn btn-success" title="Add" style="margin-bottom:10px;">
+                                <i class="bi bi-plus"></i>
+                            </a>
+                        </div>
+                        
+
+                        <h1>Daftar Admin</h1>
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    
                     <table class="table table-borderless datatable">
                         <thead>
                             <tr>
