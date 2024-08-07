@@ -34,6 +34,17 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Tabel Buku</h5>
+                    <div class="text-end">
+                      <a href="{{ route('addbuku') }}" class="btn btn-success" title="Add" style="margin-bottom:10px;">
+                        <i class="bi bi-plus"></i>
+                    </a>
+                  </div>
+                  @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                  
                     <!-- Bordered Table -->
                     <table class="table table-borderless datatable">
                         <thead>
@@ -62,9 +73,19 @@
                                 <td>{{ $b->kategori }}</td>
                                 <th>
                                     <a href="{{ route('halaman.buku.detail', $b->id_buku) }}" class="btn light btn-secondary shadow btn-xs sharp mr-1"><i class="bi bi-info-circle"></i></a>
-                                    <a href="#" class="btn light btn-warning shadow btn-xs sharp mr-1"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="#" class="btn light btn-danger shadow btn-xs sharp mr-1"><i class="bi bi-trash"></i></a>
-                                </th>
+                                    <form id="editForm_{{ $b->id_buku }}" action="{{ route('halaman.buku.edit', $b->id_buku) }}" method="GET" style="display: inline;">
+                                      @csrf
+                                      <button type="submit" class="btn btn-warning shadow btn-xs sharp">
+                                          <i class="bi bi-pencil-square"></i>
+                                      </button>
+                                  </form>
+                                  <form action="{{ route('buku.forcedelete', $b->id_buku) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger shadow btn-xs sharp">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form></th>
                             </tr>
                             @endforeach
                         </tbody>

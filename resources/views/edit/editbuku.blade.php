@@ -18,102 +18,99 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Tambah Admin</h1>
+        <h1>Edit Buku</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('halaman.admin') }}">Home</a></li>
-                <li class="breadcrumb-item active">Tambah Admin</li>
+                <li class="breadcrumb-item"><a href="{{ route('halaman.buku') }}">Buku</a></li>
+                <li class="breadcrumb-item active">Edit Buku</li>
             </ol>
         </nav>
-    </div>
+    </div><!-- End Page Title -->
 
     <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-    
+
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Tambah Admin</h5>
+                            <h5 class="card-title">Edit Buku</h5>
                         </div>
                         <div class="card-body">
-    
+
                             <!-- General Form Elements -->
-                            <form action="{{ route('admin.store') }}" method="POST">
+                            <form action="{{ route('halaman.buku.update', $buku->id_buku) }}" method="POST">
                                 @csrf
-    
+                                @method('PUT')
+
                                 <div class="form-group row mb-3">
-                                    <label for="nama_admin" class="col-sm-3 col-form-label">Nama Admin</label>
+                                    <label for="judul" class="col-sm-3 col-form-label">Judul</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="nama_admin" name="nama_admin" required>
+                                        <input type="text" class="form-control" id="judul" name="judul" value="{{ $buku->judul }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="email" class="col-sm-3 col-form-label">email</label>
+                                    <label for="penulis" class="col-sm-3 col-form-label">Penulis</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="email" name="email" required>
+                                        <input type="text" class="form-control" id="penulis" name="penulis" value="{{ $buku->penulis }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                    <label for="penerbit" class="col-sm-3 col-form-label">Penerbit</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <input type="text" class="form-control" id="penerbit" name="penerbit" value="{{ $buku->penerbit }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                                    <label for="tahun_terbit" class="col-sm-3 col-form-label">Tahun Terbit</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="alamat" name="alamat">
+                                        <input type="date" class="form-control" id="tahun_terbit" name="tahun_terbit" value="{{ $buku->tahun_terbit }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="no_telepon" class="col-sm-3 col-form-label">No Telepon</label>
+                                    <label for="status_ketersediaan" class="col-sm-3 col-form-label">Status Ketersediaan</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="no_telepon" name="no_telepon">
+                                        <input type="text" class="form-control" id="status_ketersediaan" name="status_ketersediaan" value="{{ $buku->status_ketersediaan }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="tanggal_lahir" class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                    <label for="stok" class="col-sm-3 col-form-label">Stok</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                                        <input type="number" class="form-control" id="stok" name="stok" value="{{ $buku->stok }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
-                                    <label for="jenis_kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                    <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <select id="jenis_kelamin" name="jenis_kelamin" class="form-select" required>
-                                            <option value="" selected>Jenis Kelamin</option>
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="kategori" name="kategori" value="{{ $buku->kategori }}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group row mb-3">
                                     <div class="col-sm-9 offset-sm-3">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                        <a href="{{ route('halaman.admin') }}" class="btn btn-secondary ml-2">Cancel</a>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <a href="{{ route('halaman.buku') }}" class="btn btn-secondary ms-2">Cancel</a>
                                     </div>
                                 </div>
-    
+
                             </form>
                             <!-- End General Form Elements -->
-    
+
                         </div>
                     </div>
-    
+
                 </div>
             </div>
         </div>
     </section>
-    
-</main>
+
+</main><!-- End #main -->
 
 <footer id="footer" class="footer">
     <div class="copyright">
@@ -126,6 +123,7 @@
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+<!-- Vendor JS Files -->
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
 

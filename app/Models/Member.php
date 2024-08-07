@@ -2,10 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
-class Member extends Model
+class Member extends Authenticatable
 {
-    use HasFactory;
+    use HasRoles;
+
+    protected $table = 'members'; // Nama tabel di database
+
+    protected $fillable = [
+        'nama',
+        'no_telepon',
+        'email',
+        'password',
+    ];
+
+    public $timestamps = true; // Jika model menggunakan timestamps
+
+    protected $hidden = [
+        'password', // Menyembunyikan password
+    ];
+
+    // Mengambil password untuk otentikasi
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 }

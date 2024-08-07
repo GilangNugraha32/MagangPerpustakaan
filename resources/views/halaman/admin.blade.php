@@ -42,7 +42,7 @@
                         </div>
                         
 
-                        <h1>Daftar Admin</h1>
+                        <h5>Daftar Admin</h5>
                         @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -66,13 +66,24 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $admin->nama_admin }}</td>
-                                <td>{{ $admin->username }}</td>
+                                <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->alamat }}</td>
                                 <td>{{ $admin->no_telepon }}</td>
                                 <td>{{ $admin->tanggal_lahir }}</td>
                                 <td>
-                                    <a href="#" class="btn light btn-warning shadow btn-xs sharp mr-1"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="#" class="btn light btn-danger shadow btn-xs sharp mr-1"><i class="bi bi-trash"></i></a>
+                                    <form id="editForm_{{ $admin->id_admin }}" action="{{ route('admin.edit', $admin->id_admin) }}" method="GET" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning shadow btn-xs sharp">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('admin_forcedelete', $admin->id_admin) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
