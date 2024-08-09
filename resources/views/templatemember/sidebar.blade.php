@@ -13,29 +13,7 @@
             <span>Buku</span>
         </a>
     </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('halaman.kategoribuku') }}">
-            <i class="ri ri-bar-chart-horizontal-line"></i>
-            <span>Kategori Buku</span>
-        </a>
-    </li>
-
-    <li class="nav-heading">Akun</li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('halaman.admin') }}">
-            <i class="bi bi-person"></i>
-            <span>Admin</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('halaman.member') }}">
-            <i class="bi bi-gem"></i>
-            <span>Member</span>
-        </a>
-    </li>
-
+    
     <li class="nav-heading">Transaksi</li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('halaman.peminjaman') }}">

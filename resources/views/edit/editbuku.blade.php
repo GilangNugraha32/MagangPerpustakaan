@@ -72,13 +72,6 @@
                                 </div>
 
                                 <div class="form-group row mb-3">
-                                    <label for="status_ketersediaan" class="col-sm-3 col-form-label">Status Ketersediaan</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="status_ketersediaan" name="status_ketersediaan" value="{{ $buku->status_ketersediaan }}" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-3">
                                     <label for="stok" class="col-sm-3 col-form-label">Stok</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="stok" name="stok" value="{{ $buku->stok }}" required>
@@ -88,7 +81,14 @@
                                 <div class="form-group row mb-3">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kategori" name="kategori" value="{{ $buku->kategori }}" required>
+                                        <select id="kategori" name="kategori" class="form-select" required>
+                                            <option value="" disabled>Pilih Kategori</option>
+                                            @foreach($kategoris as $kategori)
+                                                <option value="{{ $kategori->nama_kategori }}" {{ $buku->kategori == $kategori->nama_kategori ? 'selected' : '' }}>
+                                                    {{ $kategori->nama_kategori }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

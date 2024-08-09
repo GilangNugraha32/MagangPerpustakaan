@@ -18,18 +18,26 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Tambah Admin</h1>
+        <h1>Tambah Buku Baru</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('halaman.buku') }}">Home</a></li>
-                <li class="breadcrumb-item active">Tambah Admin</li>
+                <li class="breadcrumb-item active">Tambah Buku Baru</li>
             </ol>
         </nav>
     </div>
 
     <section class="section">
         <div class="container">
-            <h2>Tambah Buku Baru</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Tambah Buku Baru</h5>
+                        </div>
+                        <div class="card-body">
+    
         
             @if(session('success'))
                 <div class="alert alert-success">
@@ -60,18 +68,21 @@
                 </div>
         
                 <div class="mb-3">
-                    <label for="status_ketersediaan" class="form-label">Status Ketersediaan</label>
-                    <input type="text" name="status_ketersediaan" class="form-control" id="status_ketersediaan" required>
-                </div>
-        
-                <div class="mb-3">
                     <label for="stok" class="form-label">Stok</label>
                     <input type="number" name="stok" class="form-control" id="stok" required>
                 </div>
-        
                 <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
-                    <input type="text" name="kategori" class="form-control" id="kategori" required>
+                    <div>
+                        <div class="mb-3">
+                            <select name="kategori" id="kategori" class="form-select" required>
+                                <option value="" disabled selected>Pilih Kategori</option>
+                                @foreach($kategoris as $kategori)
+                                    <option value="{{ $kategori->nama_kategori }}">{{ $kategori->nama_kategori }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
         
                 <button type="submit" class="btn btn-primary">Tambah Buku</button>

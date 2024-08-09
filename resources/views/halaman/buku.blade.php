@@ -34,15 +34,48 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Tabel Buku</h5>
-                    <div class="text-end">
-                      <a href="{{ route('addbuku') }}" class="btn btn-success" title="Add" style="margin-bottom:10px;">
-                        <i class="bi bi-plus"></i>
-                    </a>
+                    <div class="text-end mb-3">
+                      <div class="d-flex justify-content-end">
+                          <a href="{{ route('addbuku') }}" class="btn btn-success me-2" title="Add">
+                              <i class="bi bi-plus"></i>
+                          </a>
+                          <button type="button" class="btn btn-warning" title="Import" data-bs-toggle="modal" data-bs-target="#importModal">
+                              <i class="bi bi-upload"></i> 
+                          </button>
+                      </div>
                   </div>
+                  
+                  <!-- Modal untuk impor data buku -->
+                  <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="importModalLabel">Import Data Buku</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <!-- Form untuk mengunggah file Excel -->
+                                  <form action="{{ route('import-buku') }}" method="POST" enctype="multipart/form-data">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="file">Pilih File Excel</label>
+                                          <input type="file" class="form-control-file" id="file" name="file" required>
+                                      </div>
+                                      <button type="submit" class="btn btn-primary">Import</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                   
+                  </div>
+                  
                   @if(session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle me-1"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                         @endif
                   
                     <!-- Bordered Table -->
@@ -68,7 +101,14 @@
                                 <td>{{ $b->penulis }}</td>
                                 <td>{{ $b->penerbit }}</td>
                                 <td>{{ $b->tahun_terbit }}</td>
-                                <td><span class="badge bg-success">{{ $b->status_ketersediaan }}</td>
+                                <td>
+                                  @if($b->stok > 0)
+                                      <span class="badge bg-success">{{ $b->status_ketersediaan }}</span>
+                                  @else
+                                      <span class="badge bg-danger">Tidak tersedia</span>
+                                  @endif
+                              </td>
+                              
                                 <td>{{ $b->stok }}</td>
                                 <td>{{ $b->kategori }}</td>
                                 <th>

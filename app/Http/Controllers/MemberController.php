@@ -41,6 +41,12 @@ class MemberController extends Controller
         return view('member.dashboard'); // Pastikan ada view member/dashboard.blade.php
     }
 
+    public function index()
+    {
+        // Hanya member yang terautentikasi yang dapat mengakses dashboard ini
+        return view('halaman.member'); // Pastikan ada view member/dashboard.blade.php
+    }
+
     /**
      * Menampilkan formulir untuk menambahkan member baru.
      */
